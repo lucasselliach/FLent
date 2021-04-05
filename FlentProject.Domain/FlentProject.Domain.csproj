@@ -9,8 +9,6 @@
     <Folder Include="Friends\FriendInterfaces\Services\" />
     <Folder Include="Games\GameInterfaces\Repositories\" />
     <Folder Include="Games\GameInterfaces\Services\" />
-    <Folder Include="Games\GameInterfaces\Validations\" />
-    <Folder Include="Games\GamesValidations\" />
     <Folder Include="Lends\LendInterfaces\Repositories\" />
     <Folder Include="Lends\LendInterfaces\Services\" />
     <Folder Include="Users\UserInterfaces\Repositories\" />
