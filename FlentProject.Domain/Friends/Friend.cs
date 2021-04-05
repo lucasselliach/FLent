@@ -5,6 +5,8 @@ namespace FlentProject.Domain.Friends
 {
     public class Friend : Person
     {
+        public const int MaxNickNameLength = 100;
+
         public string NickName { get; }
         public Email Email { get; }
         public Phone PhoneNumber01 { get; }
