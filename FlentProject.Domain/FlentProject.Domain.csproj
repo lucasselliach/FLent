@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Base\People\PersonValidations\" />
+    <Folder Include="Base\People\PersonInterfaces\" />
+    <Folder Include="Friends\FriendInterfaces\" />
+    <Folder Include="Friends\FriendValidations\" />
+    <Folder Include="Games\GameInterfaces\" />
+    <Folder Include="Games\GamesValidations\" />
+    <Folder Include="Lends\LendInterfaces\" />
+    <Folder Include="Lends\LendValidations\" />
+    <Folder Include="Users\UserValidations\" />
+    <Folder Include="Users\UserInterfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoreProject.Core\CoreProject.Core.csproj" />
+  </ItemGroup>
+
+</Project>
