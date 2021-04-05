@@ -15,8 +15,6 @@
     <Folder Include="Lends\LendInterfaces\Services\" />
     <Folder Include="Users\UserInterfaces\Repositories\" />
     <Folder Include="Users\UserInterfaces\Services\" />
-    <Folder Include="Users\UserInterfaces\Validations\" />
-    <Folder Include="Users\UserValidations\" />
   </ItemGroup>
 
   <ItemGroup>

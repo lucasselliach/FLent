@@ -6,6 +6,11 @@ namespace FlentProject.Domain.Users
 {
     public class User : Person
     {
+        public const int MinPasswordLength = 6;
+        public const int MaxPasswordLength = 16;
+        public const string UserRoleAdmin = "Admin";
+        public const string UserRoleGeneral = "User";
+
         public Email Login { get; }
         public string Password { get; }
         public string Role { get; }
@@ -16,7 +21,7 @@ namespace FlentProject.Domain.Users
         {
             Login = login;
             Password = password;
-            Role = "Admin";
+            Role = UserRoleAdmin;
             Token = Guid.NewGuid().ToString();
             RecoveryToken = Guid.NewGuid().ToString();
         }

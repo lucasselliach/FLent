@@ -9,11 +9,11 @@ namespace FlentProject.Domain.Friends.FriendValidations
 {
     public class FriendValidation : PersonValidation, IFriendValidation
     {
-        protected void NickNameContract(string nickName)
+        private void NickNameContract(string value)
         {
             AddNotifications(new Contract()
-                .IsNotNull(nickName, "FriendNickName", "Apelido da pessoa não pode ser nulo.")
-                .HasMaxLen(nickName, Friend.MaxNickNameLength, "FriendNickName", "Apelido da pessoa não pode ter tamanho maior que " + Friend.MaxNickNameLength + ".")
+                .IsNotNull(value, "FriendNickName", "Apelido da pessoa não pode ser nulo.")
+                .HasMaxLen(value, Friend.MaxNickNameLength, "FriendNickName", "Apelido da pessoa não pode ter tamanho maior que " + Friend.MaxNickNameLength + ".")
             );
         }
 
