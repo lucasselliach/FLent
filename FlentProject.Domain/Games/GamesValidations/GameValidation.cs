@@ -8,14 +8,14 @@ namespace FlentProject.Domain.Games.GamesValidations
 {
     public class GameValidation : Notifiable, IGameValidation
     {
-        protected void IdContract(string value)
+        private void IdContract(string value)
         {
             AddNotifications(new Contract()
                 .AreNotEquals(value, Guid.Empty, "Id", "Id do objeto não pode ser um GUID vazio.")
             );
         }
 
-        protected void NameContract(string value)
+        private void NameContract(string value)
         {
             AddNotifications(new Contract()
                 .IsNotNullOrEmpty(value, "GameName", "Nome do jogo não pode ser nulo ou vazio.")
@@ -24,7 +24,7 @@ namespace FlentProject.Domain.Games.GamesValidations
             );
         }
 
-        protected void RegisterDateContract(DateTime value)
+        private void RegisterDateContract(DateTime value)
         {
             AddNotifications(new Contract()
                 .IsGreaterThan(value, new DateTime(2021, 01, 01), "RegisterDate", "Data do registro do jogo não pode ser menor que 01/01/2021.")
@@ -47,7 +47,7 @@ namespace FlentProject.Domain.Games.GamesValidations
 
         public IReadOnlyCollection<Notification> AddNotification(string message)
         {
-            AddNotification("FriendValidationGeneral", message);
+            AddNotification("GameValidationGeneral", message);
 
             return Notifications;
         }
