@@ -12,11 +12,11 @@ namespace FLentProject.Domain.Games
         public DateTime RegisterDate { get; }
         public bool Lent { get; private set; }
 
-        public Game(string name, DateTime registerDate, bool lent)
+        public Game(string name)
         {
             Name = name;
-            RegisterDate = registerDate;
-            Lent = lent;
+            RegisterDate = DateTime.Now;
+            Lent = false;
         }
 
         public void Lending()

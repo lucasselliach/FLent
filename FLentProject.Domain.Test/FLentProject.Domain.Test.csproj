@@ -13,4 +13,14 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="FriendTests\" />
+    <Folder Include="LendTests\" />
+    <Folder Include="UserTests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlentProject.Domain\FLentProject.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
