@@ -5,15 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="RavenDB.Client" Version="5.1.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CoreProject.Core\CoreProject.Core.csproj" />
+    <ProjectReference Include="..\FlentProject.Domain\FLentProject.Domain.csproj" />
   </ItemGroup>
 
 </Project>
