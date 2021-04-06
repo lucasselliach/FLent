@@ -95,6 +95,12 @@ namespace FLentProject.Domain.Lends.LendValidations
             UserContract(lend.User);
             FriendContract(lend.Friend);
             GameContract(lend.Game);
+
+            return Valid;
+        }
+
+        public bool CheckLending(Lend lend)
+        {
             LendingDateContract(lend.LendingDate);
             DeadlineDateContract(lend.DeadlineDate);
 

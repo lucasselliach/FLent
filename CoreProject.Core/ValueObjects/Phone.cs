@@ -22,7 +22,7 @@ namespace CoreProject.Core.ValueObjects
         {
             //https://regex101.com/r/lHbA3X/2
             if (Value == null) return false;
-            if (string.IsNullOrEmpty(Value)) return true;
+            if (string.IsNullOrEmpty(Value)) return false;
             if (Value.Length < MinLength) return false;
             if (Value.Length > MaxLength) return false;
 

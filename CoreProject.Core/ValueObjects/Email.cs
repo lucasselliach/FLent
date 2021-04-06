@@ -19,7 +19,7 @@ namespace CoreProject.Core.ValueObjects
         {
             //https://regex101.com/r/mX1xW0/1
             if (Value == null) return false;
-            if (string.IsNullOrEmpty(Value)) return true;
+            if (string.IsNullOrEmpty(Value)) return false;
             if (Value.Length > MaxLength) return false;
 
             var regexEmail = new Regex(@"^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$");

@@ -14,12 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="FriendTests\" />
-    <Folder Include="LendTests\" />
-    <Folder Include="UserTests\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\FlentProject.Domain\FLentProject.Domain.csproj" />
   </ItemGroup>
 

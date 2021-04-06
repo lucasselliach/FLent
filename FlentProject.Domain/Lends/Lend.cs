@@ -19,7 +19,7 @@ namespace FLentProject.Domain.Lends
 
         public Lend(User user, Friend friend, Game game)
         {
-            Title = "";
+            Title = "Empréstimo de " + game?.Name + " para " + friend?.Name;
             User = user;
             Friend = friend;
             Game = game;

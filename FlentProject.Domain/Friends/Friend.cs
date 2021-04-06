@@ -5,7 +5,7 @@ namespace FLentProject.Domain.Friends
 {
     public class Friend : Person
     {
-        public const int MaxNickNameLength = 100;
+        public const int MaxNickNameLength = 40;
 
         public string NickName { get; }
         public Email Email { get; }
