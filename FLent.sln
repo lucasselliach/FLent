@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Domain", "Flen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Domain.Test", "FLentProject.Domain.Test\FLentProject.Domain.Test.csproj", "{188C8ECE-D1C3-4AD3-92A4-7ABE181766B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Infra.Data", "FLentProject.Infra.Data\FLentProject.Infra.Data.csproj", "{AB778EA5-145C-4293-AE73-C8A933708A33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{188C8ECE-D1C3-4AD3-92A4-7ABE181766B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{188C8ECE-D1C3-4AD3-92A4-7ABE181766B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{188C8ECE-D1C3-4AD3-92A4-7ABE181766B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB778EA5-145C-4293-AE73-C8A933708A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB778EA5-145C-4293-AE73-C8A933708A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB778EA5-145C-4293-AE73-C8A933708A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB778EA5-145C-4293-AE73-C8A933708A33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{22AFDA9A-1E97-4F57-A9F7-BEDC49A40B23} = {03721066-8524-4AD9-8591-8B07B8288514}
 		{FB77C63E-8D17-4C96-8B55-BBFEAA3E6791} = {4EA17CD7-C882-4CFA-9023-77BF0F62CA2F}
 		{188C8ECE-D1C3-4AD3-92A4-7ABE181766B4} = {4EA17CD7-C882-4CFA-9023-77BF0F62CA2F}
+		{AB778EA5-145C-4293-AE73-C8A933708A33} = {959710B1-4734-4ABE-9F56-0E671148EB65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CF53644B-25A2-4CE3-82B4-D533FAC19C92}
