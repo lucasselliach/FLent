@@ -2,7 +2,7 @@
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace FlentProject.Domain.Base.People.PersonValidations
+namespace FLentProject.Domain.Base.People.PersonValidations
 {
     public abstract class PersonValidation : Notifiable
     {

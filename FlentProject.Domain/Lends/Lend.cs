@@ -1,10 +1,10 @@
 ﻿using System;
 using CoreProject.Core.Entities;
-using FlentProject.Domain.Friends;
-using FlentProject.Domain.Games;
-using FlentProject.Domain.Users;
+using FLentProject.Domain.Friends;
+using FLentProject.Domain.Games;
+using FLentProject.Domain.Users;
 
-namespace FlentProject.Domain.Lends
+namespace FLentProject.Domain.Lends
 {
     public class Lend : Entity
     {

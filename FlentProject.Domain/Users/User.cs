@@ -1,8 +1,8 @@
 ﻿using System;
 using CoreProject.Core.ValueObjects;
-using FlentProject.Domain.Base.People;
+using FLentProject.Domain.Base.People;
 
-namespace FlentProject.Domain.Users
+namespace FLentProject.Domain.Users
 {
     public class User : Person
     {

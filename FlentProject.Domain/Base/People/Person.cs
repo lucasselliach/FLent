@@ -1,7 +1,7 @@
 ﻿using System;
 using CoreProject.Core.Entities;
 
-namespace FlentProject.Domain.Base.People
+namespace FLentProject.Domain.Base.People
 {
     public abstract class Person : Entity
     {

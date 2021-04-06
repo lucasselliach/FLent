@@ -1,7 +1,7 @@
 ﻿using System;
 using CoreProject.Core.Entities;
 
-namespace FlentProject.Domain.Games
+namespace FLentProject.Domain.Games
 {
     public class Game : Entity
     {

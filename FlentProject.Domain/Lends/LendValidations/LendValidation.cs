@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using FlentProject.Domain.Friends;
-using FlentProject.Domain.Friends.FriendInterfaces.Validations;
-using FlentProject.Domain.Games;
-using FlentProject.Domain.Games.GameInterfaces.Validations;
-using FlentProject.Domain.Lends.LendInterfaces.Validations;
-using FlentProject.Domain.Users;
-using FlentProject.Domain.Users.UserInterfaces.Validations;
+using FLentProject.Domain.Friends;
+using FLentProject.Domain.Friends.FriendInterfaces.Validations;
+using FLentProject.Domain.Games;
+using FLentProject.Domain.Games.GameInterfaces.Validations;
+using FLentProject.Domain.Lends.LendInterfaces.Validations;
+using FLentProject.Domain.Users;
+using FLentProject.Domain.Users.UserInterfaces.Validations;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace FlentProject.Domain.Lends.LendValidations
+namespace FLentProject.Domain.Lends.LendValidations
 {
     public class LendValidation : Notifiable, ILendValidation
     {

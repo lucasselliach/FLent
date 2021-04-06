@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using CoreProject.Core.ValueObjects;
-using FlentProject.Domain.Base.People.PersonValidations;
-using FlentProject.Domain.Users.UserInterfaces.Validations;
+using FLentProject.Domain.Base.People.PersonValidations;
+using FLentProject.Domain.Users.UserInterfaces.Validations;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace FlentProject.Domain.Users.UserValidations
+namespace FLentProject.Domain.Users.UserValidations
 {
     public class UserValidation : PersonValidation, IUserValidation
     {

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using CoreProject.Core.ValueObjects;
-using FlentProject.Domain.Base.People.PersonValidations;
-using FlentProject.Domain.Friends.FriendInterfaces.Validations;
+using FLentProject.Domain.Base.People.PersonValidations;
+using FLentProject.Domain.Friends.FriendInterfaces.Validations;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace FlentProject.Domain.Friends.FriendValidations
+namespace FLentProject.Domain.Friends.FriendValidations
 {
     public class FriendValidation : PersonValidation, IFriendValidation
     {

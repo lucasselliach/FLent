@@ -1,7 +1,7 @@
 ﻿using CoreProject.Core.ValueObjects;
-using FlentProject.Domain.Base.People;
+using FLentProject.Domain.Base.People;
 
-namespace FlentProject.Domain.Friends
+namespace FLentProject.Domain.Friends
 {
     public class Friend : Person
     {

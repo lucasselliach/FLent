@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using FlentProject.Domain.Games.GameInterfaces.Validations;
+using FLentProject.Domain.Games.GameInterfaces.Validations;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace FlentProject.Domain.Games.GamesValidations
+namespace FLentProject.Domain.Games.GamesValidations
 {
     public class GameValidation : Notifiable, IGameValidation
     {
