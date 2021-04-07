@@ -33,15 +33,17 @@ namespace FLentProject.Infra.Data.Repositories.UserRepository
             session.Store(entity);
             session.SaveChanges();
 
-            return session.Advanced.HasChanged(entity);
+            return session.Advanced.Exists(entity.Id);
         }
 
         public bool Edit(User entity)
         {
             var session = _unitOfWork.OpenSession();
-            session.SaveChanges();
+            var entityChanged = session.Advanced.HasChanged(entity);
 
-            return session.Advanced.HasChanged(entity);
+            if (entityChanged) session.SaveChanges();
+
+            return entityChanged;
         }
 
         public bool Delete(User entity)

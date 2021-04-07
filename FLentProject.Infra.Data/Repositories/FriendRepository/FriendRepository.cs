@@ -39,9 +39,11 @@ namespace FLentProject.Infra.Data.Repositories.FriendRepository
         public bool Edit(Friend entity)
         {
             var session = _unitOfWork.OpenSession();
-            session.SaveChanges();
+            var entityChanged = session.Advanced.HasChanged(entity);
 
-            return session.Advanced.HasChanged(entity);
+            if (entityChanged) session.SaveChanges();
+
+            return entityChanged;
         }
 
         public bool Delete(Friend entity)
