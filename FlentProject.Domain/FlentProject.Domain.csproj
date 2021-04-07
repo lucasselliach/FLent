@@ -5,13 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Friends\FriendInterfaces\Services\" />
-    <Folder Include="Games\GameInterfaces\Services\" />
-    <Folder Include="Lends\LendInterfaces\Services\" />
-    <Folder Include="Users\UserInterfaces\Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CoreProject.Core\CoreProject.Core.csproj" />
   </ItemGroup>
 

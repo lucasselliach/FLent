@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using CoreProject.Core.Entities;
 
 namespace FLentProject.Domain.Games
@@ -8,8 +9,8 @@ namespace FLentProject.Domain.Games
         public const int MinNameLength = 2;
         public const int MaxNameLength = 100;
 
-        public string Name { get; }
-        public DateTime RegisterDate { get; }
+        public string Name { get; private set; }
+        public DateTime RegisterDate { get; private set; }
         public bool Lent { get; private set; }
 
         public Game(string name)
@@ -17,6 +18,11 @@ namespace FLentProject.Domain.Games
             Name = name;
             RegisterDate = DateTime.Now;
             Lent = false;
+        }
+
+        public void Edit(string name)
+        {
+            Name = name;
         }
 
         public void Lending()

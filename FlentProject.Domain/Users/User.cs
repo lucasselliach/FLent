@@ -11,11 +11,11 @@ namespace FLentProject.Domain.Users
         public const string UserRoleAdmin = "Admin";
         public const string UserRoleGeneral = "User";
 
-        public Email Login { get; }
-        public string Password { get; }
-        public string Role { get; }
-        public string Token { get; }
-        public string RecoveryToken { get; }
+        public Email Login { get; private set; }
+        public string Password { get; private set; }
+        public string Role { get; private set; }
+        public string Token { get; private set; }
+        public string RecoveryToken { get; private set; }
 
         public User(string name, Email login, string password) : base(name)
         {

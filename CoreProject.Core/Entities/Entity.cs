@@ -4,7 +4,7 @@ namespace CoreProject.Core.Entities
 {
     public abstract class Entity
     {
-        public string Id { get; }
+        public string Id { get; private set; }
 
         protected Entity()
         {

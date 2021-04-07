@@ -8,10 +8,10 @@ namespace FLentProject.Domain.Lends
 {
     public class Lend : Entity
     {
-        public string Title { get; }
-        public User User { get; }
-        public Friend Friend { get; }
-        public Game Game { get; }
+        public string Title { get; private set; }
+        public User User { get; private set; }
+        public Friend Friend { get; private set; }
+        public Game Game { get; private set; }
         public DateTime LendingDate { get; private set; }
         public DateTime DeadlineDate { get; private set; }
         public DateTime ReturnDate { get; private set; }

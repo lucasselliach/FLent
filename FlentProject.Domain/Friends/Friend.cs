@@ -7,9 +7,9 @@ namespace FLentProject.Domain.Friends
     {
         public const int MaxNickNameLength = 40;
 
-        public string NickName { get; }
-        public Email Email { get; }
-        public Phone PhoneNumber01 { get; }
+        public string NickName { get; private set; }
+        public Email Email { get; private set; }
+        public Phone PhoneNumber01 { get; private set; }
 
         public Friend(string name, string nickName, Email email, Phone phoneNumber01) : base(name)
         {
