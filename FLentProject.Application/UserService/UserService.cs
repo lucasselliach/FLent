@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using CoreProject.Core.Interfaces.Validations;
+using CoreProject.Core.ValueObjects;
 using FLentProject.Domain.Users;
 using FLentProject.Domain.Users.UserInterfaces.Repositories;
 using FLentProject.Domain.Users.UserInterfaces.Services;
 using FLentProject.Domain.Users.UserInterfaces.Validations;
+using FLentProject.Infra.CrossCutting.Auth;
 
 namespace FLentProject.Application.UserService
 {
@@ -71,6 +73,29 @@ namespace FLentProject.Application.UserService
             {
                 _validationNotification.Notifications = _userValidation.CheckedNotifications();
             }
+        }
+
+        public User Authenticate(Email login, string password)
+        {
+            var user = _userRepository.GetByLogin(login);
+            
+            if (user == null)
+            {
+                _validationNotification.Notifications = _userValidation.AddNotification("Usuário não foi encontrado com login informado.");
+                return null;
+            }
+
+            if (user.Password != password)
+            {
+                _validationNotification.Notifications = _userValidation.AddNotification("Senha de usuário não confere com a senha informada.");
+                return null;
+            }
+
+            user.EditToken(AuthenticationResolver.AuthenticateResolverToken(user));
+
+            _userRepository.Edit(user);
+
+            return user;
         }
     }
 }

@@ -16,14 +16,21 @@ namespace FLentProject.Domain.Users
         public string Role { get; private set; }
         public string Token { get; private set; }
         public string RecoveryToken { get; private set; }
+        public DateTime LastLogin { get; private set; }
 
         public User(string name, Email login, string password) : base(name)
         {
             Login = login;
             Password = password;
             Role = UserRoleAdmin;
-            Token = Guid.NewGuid().ToString();
-            RecoveryToken = Guid.NewGuid().ToString();
+            Token = "";
+            RecoveryToken = "";
+        }
+
+        public void EditToken(string token)
+        {
+            Token = token;
+            LastLogin = DateTime.Now;
         }
     }
 }

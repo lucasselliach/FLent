@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CoreProject.Core.ValueObjects;
 using FLentProject.Domain.Users;
 using FLentProject.Domain.Users.UserInterfaces.Repositories;
 using FLentProject.Infra.Data.UnitOfWork.Interfaces;
@@ -53,6 +54,12 @@ namespace FLentProject.Infra.Data.Repositories.UserRepository
             session.SaveChanges();
 
             return session.Advanced.Exists(entity.Id) == false;
+        }
+
+        public User GetByLogin(Email login)
+        {
+            var session = _unitOfWork.OpenSession();
+            return session.Query<User>().FirstOrDefault(x => x.Login == login);
         }
     }
 }

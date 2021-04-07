@@ -5,6 +5,7 @@ using CoreProject.Core.ValueObjects;
 using FLentProject.Api.Controlllers.ViewModels.UserViewModels;
 using FLentProject.Domain.Users;
 using FLentProject.Domain.Users.UserInterfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FLentProject.Api.Controlllers
@@ -20,6 +21,7 @@ namespace FLentProject.Api.Controlllers
         }
 
 
+        [Filters.Authorize]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -33,6 +35,7 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
@@ -46,6 +49,7 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Create([FromBody] UserCreateViewModel userCreateViewModel)
         {
@@ -66,6 +70,23 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("Login")]
+        public IActionResult Authenticate([FromBody] UserAuthenticateRequest userAuthenticateRequest)
+        {
+            try
+            {
+                var login = new Email(userAuthenticateRequest.Login);
+                return CreateResponse(HttpStatusCode.OK, _userService.Authenticate(login, userAuthenticateRequest.Password));
+            }
+            catch (Exception err)
+            {
+                return CreateResponse(HttpStatusCode.BadRequest, err.Message);
+            }
+        }
+        
+
         //[HttpPut("{id}")]
         //public IActionResult Edit(string id, [FromBody] UserEditViewModel userEditViewModel)
         //{
@@ -83,21 +104,22 @@ namespace FLentProject.Api.Controlllers
         //        return CreateResponse(HttpStatusCode.BadRequest, err.Message);
         //    }
         //}
+        
+        //[Filters.Authorize]
+        //[HttpDelete("{id}")]
+        //public IActionResult Delete(string id)
+        //{
+        //    try
+        //    {
+        //        var user = _userService.GetById(id);
+        //        _userService.Delete(user);
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(string id)
-        {
-            try
-            {
-                var user = _userService.GetById(id);
-                _userService.Delete(user);
-
-                return CreateResponse(HttpStatusCode.OK, "Object deleted");
-            }
-            catch (Exception err)
-            {
-                return CreateResponse(HttpStatusCode.BadRequest, err.Message);
-            }
-        }
+        //        return CreateResponse(HttpStatusCode.OK, "Object deleted");
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        return CreateResponse(HttpStatusCode.BadRequest, err.Message);
+        //    }
+        //}
     }
 }

@@ -20,6 +20,8 @@ using FLentProject.Domain.Users.UserInterfaces.Repositories;
 using FLentProject.Domain.Users.UserInterfaces.Services;
 using FLentProject.Domain.Users.UserInterfaces.Validations;
 using FLentProject.Domain.Users.UserValidations;
+using FLentProject.Infra.CrossCutting.Auth;
+using FLentProject.Infra.CrossCutting.Auth.Interfaces;
 using FLentProject.Infra.CrossCutting.Environment;
 using FLentProject.Infra.CrossCutting.Notification;
 using FLentProject.Infra.Data.RavenDb;
@@ -54,9 +56,7 @@ namespace FLentProject.Infra.CrossCutting.Ioc
             //RAVENDB context dependency
             services.AddSingleton<IDocumentStoreHolder, DocumentStoreHolder>();
             //Security context dependency
-            //services.AddScoped<IAccountService, AccountService>();
-            //services.AddScoped<IJwtHandler, JwtHandler>();
-            //services.AddScoped<IFacebookService, FacebookService>();
+            services.AddScoped<IUserIdentity, UserIdentity>();
 
             services.AddScoped<IGameValidation, GameValidation>();
             services.AddScoped<IGameRepository, GameRepository>();

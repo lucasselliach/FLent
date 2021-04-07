@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CoreProject.Core.Interfaces.Apis;
+using FLentProject.Api.Filters;
+using FLentProject.Infra.CrossCutting.Auth;
 using FLentProject.Infra.CrossCutting.Ioc;
 using Microsoft.Extensions.Configuration;
 
@@ -19,7 +21,10 @@ namespace FLentProject.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddCors();
+            services.AddControllers(options => {
+                options.Filters.Add(typeof(AuthorizationFilter));
+            });
 
             DependencyInjection.RegisterServices(services);
         }
@@ -34,6 +39,13 @@ namespace FLentProject.Api
             hostingEnvironmentHolder.ContentRootPath = env.ContentRootPath;
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseMiddleware<AuthenticationMiddleware>();
 
             app.UseEndpoints(endpoints =>
                 endpoints.MapControllerRoute(
