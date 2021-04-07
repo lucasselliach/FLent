@@ -16,6 +16,8 @@ namespace FLentProject.Domain.Test.LendTests
         [Fact]
         public void If_validation_has_been_checked_with_invalid_lend_then_lend_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var userValidation = new UserValidation();
             var friendValidation = new FriendValidation();
             var gameValidation = new GameValidation();
@@ -33,9 +35,10 @@ namespace FLentProject.Domain.Test.LendTests
             var friend = new Friend("duduzinho",
                 "dudu",
                 friendEmail,
-                friendPhone);
+                friendPhone, 
+                userId);
 
-            var lend = new Lend(user, friend, null);
+            var lend = new Lend(user, friend, null, userId);
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }
@@ -43,6 +46,8 @@ namespace FLentProject.Domain.Test.LendTests
         [Fact]
         public void If_validation_has_been_checked_with_valid_lend_then_lend_is_valid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var userValidation = new UserValidation();
             var friendValidation = new FriendValidation();
             var gameValidation = new GameValidation();
@@ -60,11 +65,11 @@ namespace FLentProject.Domain.Test.LendTests
             var friend = new Friend("duduzinho",
                 "dudu",
                 friendEmail,
-                friendPhone);
+                friendPhone, userId);
 
-            var game = new Game("Call of Duty: MW");
+            var game = new Game("Call of Duty: MW", userId);
 
-            var lend = new Lend(user, friend, game);
+            var lend = new Lend(user, friend, game, userId);
 
             Assert.True(lendValidation.Check(lend), "Lend is not valid! R:" + lendValidation.Notifications);
         }
@@ -72,6 +77,8 @@ namespace FLentProject.Domain.Test.LendTests
         [Fact]
         public void If_validation_has_been_checked_with_invalid_user_then_lend_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var userValidation = new UserValidation();
             var friendValidation = new FriendValidation();
             var gameValidation = new GameValidation();
@@ -89,11 +96,13 @@ namespace FLentProject.Domain.Test.LendTests
             var friend = new Friend("duduzinho",
                 "dudu",
                 friendEmail,
-                friendPhone);
+                friendPhone, 
+                userId);
 
-            var game = new Game("Call of Duty: MW");
 
-            var lend = new Lend(user, friend, game);
+            var game = new Game("Call of Duty: MW", userId);
+
+            var lend = new Lend(user, friend, game, userId);
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }
@@ -101,6 +110,8 @@ namespace FLentProject.Domain.Test.LendTests
         [Fact]
         public void If_validation_has_been_checked_with_invalid_friend_then_lend_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var userValidation = new UserValidation();
             var friendValidation = new FriendValidation();
             var gameValidation = new GameValidation();
@@ -118,11 +129,12 @@ namespace FLentProject.Domain.Test.LendTests
             var friend = new Friend("",
                 "dudu",
                 friendEmail,
-                friendPhone);
+                friendPhone,
+                userId);
 
-            var game = new Game("Call of Duty: MW");
+            var game = new Game("Call of Duty: MW", userId);
 
-            var lend = new Lend(user, friend, game);
+            var lend = new Lend(user, friend, game, userId);
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }
@@ -130,6 +142,8 @@ namespace FLentProject.Domain.Test.LendTests
         [Fact]
         public void If_validation_has_been_checked_with_invalid_game_then_lend_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var userValidation = new UserValidation();
             var friendValidation = new FriendValidation();
             var gameValidation = new GameValidation();
@@ -147,11 +161,12 @@ namespace FLentProject.Domain.Test.LendTests
             var friend = new Friend("duduzinho",
                 "dudu",
                 friendEmail,
-                friendPhone);
+                friendPhone, 
+                userId);
 
-            var game = new Game("C");
+            var game = new Game("C", userId);
 
-            var lend = new Lend(user, friend, game);
+            var lend = new Lend(user, friend, game, userId);
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }
@@ -159,6 +174,8 @@ namespace FLentProject.Domain.Test.LendTests
         [Fact]
         public void If_validation_has_been_checked_with_null_user_then_lend_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var userValidation = new UserValidation();
             var friendValidation = new FriendValidation();
             var gameValidation = new GameValidation();
@@ -170,11 +187,12 @@ namespace FLentProject.Domain.Test.LendTests
             var friend = new Friend("duduzinho",
                 "dudu",
                 friendEmail,
-                friendPhone);
+                friendPhone,
+                userId);
 
-            var game = new Game("Call of Duty: MW");
+            var game = new Game("Call of Duty: MW", userId);
 
-            var lend = new Lend(null, friend, game);
+            var lend = new Lend(null, friend, game, userId);
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }
@@ -182,6 +200,8 @@ namespace FLentProject.Domain.Test.LendTests
         [Fact]
         public void If_validation_has_been_checked_with_null_friend_then_lend_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var userValidation = new UserValidation();
             var friendValidation = new FriendValidation();
             var gameValidation = new GameValidation();
@@ -193,9 +213,9 @@ namespace FLentProject.Domain.Test.LendTests
                 userEmail,
                 "123456");
 
-            var game = new Game("Call of Duty: MW");
+            var game = new Game("Call of Duty: MW", userId);
 
-            var lend = new Lend(user, null, game);
+            var lend = new Lend(user, null, game, userId);
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }
@@ -203,6 +223,8 @@ namespace FLentProject.Domain.Test.LendTests
         [Fact]
         public void If_validation_has_been_checked_with_null_game_then_lend_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var userValidation = new UserValidation();
             var friendValidation = new FriendValidation();
             var gameValidation = new GameValidation();
@@ -220,9 +242,9 @@ namespace FLentProject.Domain.Test.LendTests
             var friend = new Friend("duduzinho",
                 "dudu",
                 friendEmail,
-                friendPhone);
+                friendPhone, userId);
 
-            var lend = new Lend(user, friend, null);
+            var lend = new Lend(user, friend, null, userId);
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }

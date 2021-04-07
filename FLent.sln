@@ -33,9 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLentProject.Api", "FLentPr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLentProject.Infra.CrossCutting.Ioc", "FLentProject.Infra.CrossCutting.Ioc\FLentProject.Infra.CrossCutting.Ioc.csproj", "{AA5ADAFA-D44F-4E93-B939-38FBA1EB4623}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Infra.CrossCutting.Notification", "FLentProject.Infra.CrossCutting.Notification\FLentProject.Infra.CrossCutting.Notification.csproj", "{29960873-2B2A-407E-8754-E636D63F9975}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLentProject.Infra.CrossCutting.Notification", "FLentProject.Infra.CrossCutting.Notification\FLentProject.Infra.CrossCutting.Notification.csproj", "{29960873-2B2A-407E-8754-E636D63F9975}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Infra.CrossCutting.Environment", "FLend.Infra.CrossCutting.Environment\FLentProject.Infra.CrossCutting.Environment.csproj", "{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLentProject.Infra.CrossCutting.Environment", "FLend.Infra.CrossCutting.Environment\FLentProject.Infra.CrossCutting.Environment.csproj", "{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Infra.CrossCutting.Auth", "FLentProject.Infra.CrossCutting.Auth\FLentProject.Infra.CrossCutting.Auth.csproj", "{E42CBA78-20C4-4554-9426-4B3B0ABEB789}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E42CBA78-20C4-4554-9426-4B3B0ABEB789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E42CBA78-20C4-4554-9426-4B3B0ABEB789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E42CBA78-20C4-4554-9426-4B3B0ABEB789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E42CBA78-20C4-4554-9426-4B3B0ABEB789}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +105,7 @@ Global
 		{AA5ADAFA-D44F-4E93-B939-38FBA1EB4623} = {22AFDA9A-1E97-4F57-A9F7-BEDC49A40B23}
 		{29960873-2B2A-407E-8754-E636D63F9975} = {22AFDA9A-1E97-4F57-A9F7-BEDC49A40B23}
 		{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE} = {22AFDA9A-1E97-4F57-A9F7-BEDC49A40B23}
+		{E42CBA78-20C4-4554-9426-4B3B0ABEB789} = {22AFDA9A-1E97-4F57-A9F7-BEDC49A40B23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CF53644B-25A2-4CE3-82B4-D533FAC19C92}

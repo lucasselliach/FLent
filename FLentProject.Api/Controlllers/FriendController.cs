@@ -5,6 +5,7 @@ using CoreProject.Core.ValueObjects;
 using FLentProject.Api.Controlllers.ViewModels.FriendViewModels;
 using FLentProject.Domain.Friends;
 using FLentProject.Domain.Friends.FriendInterfaces.Services;
+using FLentProject.Infra.CrossCutting.Auth.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FLentProject.Api.Controlllers
@@ -14,9 +15,12 @@ namespace FLentProject.Api.Controlllers
     public class FriendController : ApiController
     {
         private readonly IFriendService _friendService;
-        public FriendController(IValidationNotification validationNotification, IFriendService friendService) : base(validationNotification)
+        private readonly IUserIdentity _userIdentity;
+
+        public FriendController(IValidationNotification validationNotification, IFriendService friendService, IUserIdentity userIdentity) : base(validationNotification)
         {
             _friendService = friendService;
+            _userIdentity = userIdentity;
         }
 
 
@@ -57,7 +61,8 @@ namespace FLentProject.Api.Controlllers
                 var friend = new Friend(friendCreateViewModel.Name,
                                         friendCreateViewModel.NickName,
                                         email,
-                                        phone);
+                                        phone,
+                                        _userIdentity.GetUserId());
 
                 _friendService.Create(friend);
 

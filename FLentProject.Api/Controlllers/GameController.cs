@@ -4,6 +4,7 @@ using CoreProject.Core.Interfaces.Validations;
 using FLentProject.Api.Controlllers.ViewModels.GameViewModels;
 using FLentProject.Domain.Games;
 using FLentProject.Domain.Games.GameInterfaces.Services;
+using FLentProject.Infra.CrossCutting.Auth.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FLentProject.Api.Controlllers
@@ -13,12 +14,15 @@ namespace FLentProject.Api.Controlllers
     public class GameController : ApiController
     {
         private readonly IGameService _gameService;
-        public GameController(IValidationNotification validationNotification, IGameService gameService) : base(validationNotification)
+        private readonly IUserIdentity _userIdentity;
+
+        public GameController(IValidationNotification validationNotification, IGameService gameService, IUserIdentity userIdentity) : base(validationNotification)
         {
             _gameService = gameService;
+            _userIdentity = userIdentity;
         }
 
-
+        [Filters.Authorize]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -32,6 +36,7 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
@@ -45,12 +50,13 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
         [HttpPost]
         public IActionResult Create([FromBody] GameCreateViewModel gameCreateViewModel)
         {
             try
             {
-                var game = new Game(gameCreateViewModel.Name);
+                var game = new Game(gameCreateViewModel.Name, _userIdentity.GetUserId());
 
                 _gameService.Create(game);
 
@@ -62,6 +68,7 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
         [HttpPut("{id}")]
         public IActionResult Edit(string id, [FromBody] GameEditViewModel gameEditViewModel)
         {
@@ -80,6 +87,7 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {

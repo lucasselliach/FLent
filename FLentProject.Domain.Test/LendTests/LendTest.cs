@@ -13,6 +13,8 @@ namespace FLentProject.Domain.Test.LendTests
         [Fact]
         public void If_game_has_been_created_then_game_id_is_a_valid_guid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var userEmail = new Email("zezinho@gmail.com");
 
             var user = new User("Zezinho",
@@ -25,11 +27,12 @@ namespace FLentProject.Domain.Test.LendTests
             var friend = new Friend("duduzinho",
                                     "dudu",
                                     friendEmail,
-                                    friendPhone);
+                                    friendPhone, 
+                                    userId);
 
-            var game = new Game("Call of Duty: MW");
+            var game = new Game("Call of Duty: MW", userId);
 
-            var lend = new Lend(user, friend, game);
+            var lend = new Lend(user, friend, game, userId);
 
             Assert.True(Guid.TryParse(lend.Id, out _), "Lend id is not valid!");
         }
@@ -37,6 +40,8 @@ namespace FLentProject.Domain.Test.LendTests
         [Fact]
         public void If_game_has_been_created_then_game_title_is_not_empty()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var userEmail = new Email("zezinho@gmail.com");
 
             var user = new User("Zezinho",
@@ -49,11 +54,12 @@ namespace FLentProject.Domain.Test.LendTests
             var friend = new Friend("duduzinho",
                                     "dudu",
                                     friendEmail,
-                                    friendPhone);
+                                    friendPhone, 
+                                    userId);
 
-            var game = new Game("Call of Duty: MW");
+            var game = new Game("Call of Duty: MW", userId);
 
-            var lend = new Lend(user, friend, game);
+            var lend = new Lend(user, friend, game, userId);
 
             Assert.False(string.IsNullOrEmpty(lend.Title), "Lend title is empty!");
         }

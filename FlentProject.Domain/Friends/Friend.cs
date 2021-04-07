@@ -10,12 +10,15 @@ namespace FLentProject.Domain.Friends
         public string NickName { get; private set; }
         public Email Email { get; private set; }
         public Phone PhoneNumber01 { get; private set; }
+        public string UserId { get; private set; }
 
-        public Friend(string name, string nickName, Email email, Phone phoneNumber01) : base(name)
+
+        public Friend(string name, string nickName, Email email, Phone phoneNumber01, string userId) : base(name)
         {
             NickName = nickName;
             Email = email;
             PhoneNumber01 = phoneNumber01;
+            UserId = userId;
         }
 
         public void Edit(string nickName, Email email, Phone phoneNumber01)

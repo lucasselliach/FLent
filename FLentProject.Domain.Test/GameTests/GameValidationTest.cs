@@ -9,8 +9,10 @@ namespace FLentProject.Domain.Test.GameTests
         [Fact]
         public void If_validation_has_been_checked_with_invalid_game_then_game_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var gameValidation = new GameValidation();
-            var game = new Game("G");
+            var game = new Game("G", userId);
 
             Assert.False(gameValidation.Check(game), "Game is not invalid!");
         }
@@ -18,8 +20,10 @@ namespace FLentProject.Domain.Test.GameTests
         [Fact]
         public void If_validation_has_been_checked_with_valid_game_then_game_is_valid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var gameValidation = new GameValidation();
-            var game = new Game("GTA");
+            var game = new Game("GTA", userId);
 
             Assert.True(gameValidation.Check(game), "Game is not valid!");
         }
@@ -27,8 +31,10 @@ namespace FLentProject.Domain.Test.GameTests
         [Fact]
         public void If_validation_has_been_checked_with_null_game_name_then_name_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var gameValidation = new GameValidation();
-            var game = new Game(null);
+            var game = new Game(null, userId);
 
             Assert.False(gameValidation.Check(game), "Null game name is not invalid!");
         }
@@ -36,8 +42,10 @@ namespace FLentProject.Domain.Test.GameTests
         [Fact]
         public void If_validation_has_been_checked_with_empty_game_name_then_name_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var gameValidation = new GameValidation();
-            var game = new Game("");
+            var game = new Game("", userId);
 
             Assert.False(gameValidation.Check(game), "Empty game name is not invalid!");
         }
@@ -45,8 +53,10 @@ namespace FLentProject.Domain.Test.GameTests
         [Fact]
         public void If_validation_has_been_checked_with_min_lenght_enough_game_name_then_name_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var gameValidation = new GameValidation();
-            var game = new Game("P");
+            var game = new Game("P", userId);
 
             Assert.False(gameValidation.Check(game), "Min game name is not invalid!");
         }
@@ -54,8 +64,10 @@ namespace FLentProject.Domain.Test.GameTests
         [Fact]
         public void If_validation_has_been_checked_with_max_lenght_enough_game_name_then_name_is_invalid()
         {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
             var gameValidation = new GameValidation();
-            var game = new Game("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIO");
+            var game = new Game("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIO", userId);
 
             Assert.False(gameValidation.Check(game), "Max game name is not invalid!");
         }

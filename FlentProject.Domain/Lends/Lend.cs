@@ -16,13 +16,16 @@ namespace FLentProject.Domain.Lends
         public DateTime DeadlineDate { get; private set; }
         public DateTime ReturnDate { get; private set; }
         public bool Active { get; private set; }
+        public string UserId { get; private set; }
 
-        public Lend(User user, Friend friend, Game game)
+
+        public Lend(User user, Friend friend, Game game, string userId)
         {
             Title = "Empréstimo de " + game?.Name + " para " + friend?.Name;
             User = user;
             Friend = friend;
             Game = game;
+            UserId = userId;
         }
 
         public void Lending(DateTime deadlineDate)
