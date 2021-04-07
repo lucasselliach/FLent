@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreProject", "CoreProject"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FLentProject", "FLentProject", "{D5979EFB-F70B-4E79-84A4-D2DB70EF331F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreProject.Core", "CoreProject.Core\CoreProject.Core.csproj", "{AA99C7D9-FF81-4053-B221-39F73F47A24B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreProject.Core", "CoreProject.Core\CoreProject.Core.csproj", "{AA99C7D9-FF81-4053-B221-39F73F47A24B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{8A2C6E8F-D4BF-41AD-8771-25084871A36A}"
 EndProject
@@ -21,11 +21,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{959710B1-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{22AFDA9A-1E97-4F57-A9F7-BEDC49A40B23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Domain", "FlentProject.Domain\FLentProject.Domain.csproj", "{FB77C63E-8D17-4C96-8B55-BBFEAA3E6791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLentProject.Domain", "FlentProject.Domain\FLentProject.Domain.csproj", "{FB77C63E-8D17-4C96-8B55-BBFEAA3E6791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Domain.Test", "FLentProject.Domain.Test\FLentProject.Domain.Test.csproj", "{188C8ECE-D1C3-4AD3-92A4-7ABE181766B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLentProject.Domain.Test", "FLentProject.Domain.Test\FLentProject.Domain.Test.csproj", "{188C8ECE-D1C3-4AD3-92A4-7ABE181766B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Infra.Data", "FLentProject.Infra.Data\FLentProject.Infra.Data.csproj", "{AB778EA5-145C-4293-AE73-C8A933708A33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLentProject.Infra.Data", "FLentProject.Infra.Data\FLentProject.Infra.Data.csproj", "{AB778EA5-145C-4293-AE73-C8A933708A33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLentProject.Application", "FLentProject.Application\FLentProject.Application.csproj", "{D7A1D801-9058-4408-B019-17DC972D5A87}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLentProject.Api", "FLentProject.Api\FLentProject.Api.csproj", "{3F790609-290D-4B4A-BDFF-AD27C90628E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLentProject.Infra.CrossCutting.Ioc", "FLentProject.Infra.CrossCutting.Ioc\FLentProject.Infra.CrossCutting.Ioc.csproj", "{AA5ADAFA-D44F-4E93-B939-38FBA1EB4623}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Infra.CrossCutting.Notification", "FLentProject.Infra.CrossCutting.Notification\FLentProject.Infra.CrossCutting.Notification.csproj", "{29960873-2B2A-407E-8754-E636D63F9975}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLentProject.Infra.CrossCutting.Environment", "FLend.Infra.CrossCutting.Environment\FLentProject.Infra.CrossCutting.Environment.csproj", "{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +59,26 @@ Global
 		{AB778EA5-145C-4293-AE73-C8A933708A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB778EA5-145C-4293-AE73-C8A933708A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB778EA5-145C-4293-AE73-C8A933708A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A1D801-9058-4408-B019-17DC972D5A87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A1D801-9058-4408-B019-17DC972D5A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A1D801-9058-4408-B019-17DC972D5A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A1D801-9058-4408-B019-17DC972D5A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F790609-290D-4B4A-BDFF-AD27C90628E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F790609-290D-4B4A-BDFF-AD27C90628E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F790609-290D-4B4A-BDFF-AD27C90628E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F790609-290D-4B4A-BDFF-AD27C90628E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA5ADAFA-D44F-4E93-B939-38FBA1EB4623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA5ADAFA-D44F-4E93-B939-38FBA1EB4623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA5ADAFA-D44F-4E93-B939-38FBA1EB4623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA5ADAFA-D44F-4E93-B939-38FBA1EB4623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29960873-2B2A-407E-8754-E636D63F9975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29960873-2B2A-407E-8754-E636D63F9975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29960873-2B2A-407E-8754-E636D63F9975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29960873-2B2A-407E-8754-E636D63F9975}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +94,11 @@ Global
 		{FB77C63E-8D17-4C96-8B55-BBFEAA3E6791} = {4EA17CD7-C882-4CFA-9023-77BF0F62CA2F}
 		{188C8ECE-D1C3-4AD3-92A4-7ABE181766B4} = {4EA17CD7-C882-4CFA-9023-77BF0F62CA2F}
 		{AB778EA5-145C-4293-AE73-C8A933708A33} = {959710B1-4734-4ABE-9F56-0E671148EB65}
+		{D7A1D801-9058-4408-B019-17DC972D5A87} = {E607CCB1-B8AF-4A67-B966-D1223A4616F7}
+		{3F790609-290D-4B4A-BDFF-AD27C90628E4} = {8A2C6E8F-D4BF-41AD-8771-25084871A36A}
+		{AA5ADAFA-D44F-4E93-B939-38FBA1EB4623} = {22AFDA9A-1E97-4F57-A9F7-BEDC49A40B23}
+		{29960873-2B2A-407E-8754-E636D63F9975} = {22AFDA9A-1E97-4F57-A9F7-BEDC49A40B23}
+		{0AA487F9-A44C-4349-AACF-BCA5D20AD3BE} = {22AFDA9A-1E97-4F57-A9F7-BEDC49A40B23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CF53644B-25A2-4CE3-82B4-D533FAC19C92}
