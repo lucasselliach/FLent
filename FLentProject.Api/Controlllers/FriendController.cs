@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Net;
 using CoreProject.Core.Interfaces.Validations;
-using FLentProject.Api.Controlllers.ViewModels.GameViewModels;
-using FLentProject.Domain.Games;
-using FLentProject.Domain.Games.GameInterfaces.Services;
+using CoreProject.Core.ValueObjects;
+using FLentProject.Api.Controlllers.ViewModels.FriendViewModels;
+using FLentProject.Domain.Friends;
+using FLentProject.Domain.Friends.FriendInterfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FLentProject.Api.Controlllers
 {
     [Route("[controller]/")]
     [ApiController]
-    public class GameController : ApiController
+    public class FriendController : ApiController
     {
-        private readonly IGameService _gameService;
-        public GameController(IValidationNotification validationNotification, IGameService gameService) : base(validationNotification)
+        private readonly IFriendService _friendService;
+        public FriendController(IValidationNotification validationNotification, IFriendService friendService) : base(validationNotification)
         {
-            _gameService = gameService;
+            _friendService = friendService;
         }
 
 
@@ -24,7 +25,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                return CreateResponse(HttpStatusCode.OK, _gameService.GetAll());
+                return CreateResponse(HttpStatusCode.OK, _friendService.GetAll());
             }
             catch (Exception err)
             {
@@ -37,7 +38,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                return CreateResponse(HttpStatusCode.OK, _gameService.GetById(id));
+                return CreateResponse(HttpStatusCode.OK, _friendService.GetById(id));
             }
             catch (Exception err)
             {
@@ -46,13 +47,19 @@ namespace FLentProject.Api.Controlllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] GameCreateViewModel gameCreateViewModel)
+        public IActionResult Create([FromBody] FriendCreateViewModel friendCreateViewModel)
         {
             try
             {
-                var game = new Game(gameCreateViewModel.Name);
+                var email = new Email(friendCreateViewModel.Email);
+                var phone = new Phone(friendCreateViewModel.Phone);
 
-                _gameService.Create(game);
+                var friend = new Friend(friendCreateViewModel.Name,
+                                        friendCreateViewModel.NickName,
+                                        email,
+                                        phone);
+
+                _friendService.Create(friend);
 
                 return CreateResponse(HttpStatusCode.OK, "Object created");
             }
@@ -63,14 +70,19 @@ namespace FLentProject.Api.Controlllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Edit(string id, [FromBody] GameEditViewModel gameEditViewModel)
+        public IActionResult Edit(string id, [FromBody] FriendEditViewModel friendEditViewModel)
         {
             try
             {
-                var game = _gameService.GetById(id);
-                game.Edit(gameEditViewModel.Name);
+                var email = new Email(friendEditViewModel.Email);
+                var phone = new Phone(friendEditViewModel.Phone);
 
-                _gameService.Edit(game);
+                var friend = _friendService.GetById(id);
+                friend.Edit(friendEditViewModel.NickName,
+                            email, 
+                            phone);
+
+                _friendService.Edit(friend);
 
                 return CreateResponse(HttpStatusCode.OK, "Object edited");
             }
@@ -85,8 +97,8 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                var game = _gameService.GetById(id);
-                _gameService.Delete(game);
+                var friend = _friendService.GetById(id);
+                _friendService.Delete(friend);
 
                 return CreateResponse(HttpStatusCode.OK, "Object deleted");
             }

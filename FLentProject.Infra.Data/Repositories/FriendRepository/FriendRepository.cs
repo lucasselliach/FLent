@@ -33,7 +33,7 @@ namespace FLentProject.Infra.Data.Repositories.FriendRepository
             session.Store(entity);
             session.SaveChanges();
 
-            return session.Advanced.HasChanged(entity);
+            return session.Advanced.Exists(entity.Id);
         }
 
         public bool Edit(Friend entity)
