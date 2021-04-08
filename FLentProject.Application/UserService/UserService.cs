@@ -82,13 +82,13 @@ namespace FLentProject.Application.UserService
             if (user == null)
             {
                 _validationNotification.Notifications = _userValidation.AddNotification("Usuário não foi encontrado com login informado.");
-                return null;
+                return new User("", null,"");
             }
 
             if (user.Password != password)
             {
                 _validationNotification.Notifications = _userValidation.AddNotification("Senha de usuário não confere com a senha informada.");
-                return null;
+                return new User("", null, "");
             }
 
             user.EditToken(AuthenticationResolver.AuthenticateResolverToken(user));
