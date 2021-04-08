@@ -141,6 +141,25 @@ namespace FLentProject.Domain.Test.FriendTests
         }
 
         [Fact]
+        public void If_validation_has_been_checked_with_empty_friend_nickname_then_nickname_is_valid()
+        {
+            var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
+
+            var friendValidation = new FriendValidation();
+
+            var email = new Email("duduzinho@gmail.com");
+            var phone = new Phone("9999999999");
+
+            var friend = new Friend("duduzinho",
+                "",
+                email,
+                phone,
+                userId);
+
+            Assert.True(friendValidation.Check(friend), "EMpty friend nickname is not valid!");
+        }
+
+        [Fact]
         public void If_validation_has_been_checked_with_max_lenght_enough_friend_nickname_then_nickname_is_invalid()
         {
             var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";

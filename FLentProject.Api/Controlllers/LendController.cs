@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Net;
 using CoreProject.Core.Interfaces.Validations;
+using FLentProject.Api.Controlllers.ViewModels.LendViewModels;
+using FLentProject.Domain.Friends.FriendInterfaces.Services;
+using FLentProject.Domain.Games.GameInterfaces.Services;
 using FLentProject.Domain.Lends;
 using FLentProject.Domain.Lends.LendInterfaces.Services;
+using FLentProject.Infra.CrossCutting.Auth.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FLentProject.Api.Controlllers
@@ -12,12 +16,20 @@ namespace FLentProject.Api.Controlllers
     public class LendController : ApiController
     {
         private readonly ILendService _lendService;
-        public LendController(IValidationNotification validationNotification, ILendService lendService) : base(validationNotification)
+        private readonly IGameService _gameService;
+        private readonly IFriendService _friendService;
+        private readonly IUserIdentity _userIdentity;
+
+        public LendController(IValidationNotification validationNotification, ILendService lendService, IGameService gameService, IFriendService friendService, IUserIdentity userIdentity) : base(validationNotification)
         {
             _lendService = lendService;
+            _gameService = gameService;
+            _friendService = friendService;
+            _userIdentity = userIdentity;
         }
 
 
+        [Filters.Authorize]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -31,6 +43,7 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
@@ -44,55 +57,31 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
-        //[HttpPost]
-        //public IActionResult Create([FromBody] LendCreateViewModel lendCreateViewModel)
-        //{
-        //    try
-        //    {
-        //        var lend = new Lend(lendCreateViewModel.Name);
+        [Filters.Authorize]
+        [HttpPost]
+        public IActionResult Create([FromBody] LendCreateViewModel lendCreateViewModel)
+        {
+            try
+            {
+                var game = _gameService.GetById(lendCreateViewModel.GamerId);
+                var friend = _friendService.GetById(lendCreateViewModel.FriendId);
 
-        //        _lendService.Create(lend);
+                var lend = new Lend(friend,
+                                    game,
+                                    _userIdentity.GetUserId());
 
-        //        return CreateResponse(HttpStatusCode.OK, "Object created");
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        return CreateResponse(HttpStatusCode.BadRequest, err.Message);
-        //    }
-        //}
+                _lendService.Create(lend);
 
-        //[HttpPut("{id}")]
-        //public IActionResult Edit(string id, [FromBody] LendEditViewModel lendEditViewModel)
-        //{
-        //    try
-        //    {
-        //        var lend = _lendService.GetById(id);
-        //        lend.Edit(lendEditViewModel.Name);
+                return CreateResponse(HttpStatusCode.OK, "Object created");
+            }
+            catch (Exception err)
+            {
+                return CreateResponse(HttpStatusCode.BadRequest, err.Message);
+            }
+        }
 
-        //        _lendService.Edit(lend);
 
-        //        return CreateResponse(HttpStatusCode.OK, "Object edited");
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        return CreateResponse(HttpStatusCode.BadRequest, err.Message);
-        //    }
-        //}
 
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(string id)
-        //{
-        //    try
-        //    {
-        //        var lend = _lendService.GetById(id);
-        //        _lendService.Delete(lend);
 
-        //        return CreateResponse(HttpStatusCode.OK, "Object deleted");
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        return CreateResponse(HttpStatusCode.BadRequest, err.Message);
-        //    }
-        //}
     }
 }

@@ -8,7 +8,7 @@ namespace FLentProject.Domain.Base.People
         public const int MinNameLength = 3;
         public const int MaxNameLength = 100;
 
-        public string Name { get; private set; }
+        public string Name { get; protected set; }
         public DateTime RegisterDate { get; private set; }
 
         protected Person(string name)

@@ -21,8 +21,9 @@ namespace FLentProject.Domain.Friends
             UserId = userId;
         }
 
-        public void Edit(string nickName, Email email, Phone phoneNumber01)
+        public void Edit(string name, string nickName, Email email, Phone phoneNumber01)
         {
+            Name = name;
             NickName = nickName;
             Email = email;
             PhoneNumber01 = phoneNumber01;

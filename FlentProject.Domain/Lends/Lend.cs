@@ -9,7 +9,6 @@ namespace FLentProject.Domain.Lends
     public class Lend : Entity
     {
         public string Title { get; private set; }
-        public User User { get; private set; }
         public Friend Friend { get; private set; }
         public Game Game { get; private set; }
         public DateTime LendingDate { get; private set; }
@@ -19,10 +18,9 @@ namespace FLentProject.Domain.Lends
         public string UserId { get; private set; }
 
 
-        public Lend(User user, Friend friend, Game game, string userId)
+        public Lend(Friend friend, Game game, string userId)
         {
             Title = "Empréstimo de " + game?.Name + " para " + friend?.Name;
-            User = user;
             Friend = friend;
             Game = game;
             UserId = userId;

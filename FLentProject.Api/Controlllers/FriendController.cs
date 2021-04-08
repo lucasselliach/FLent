@@ -24,6 +24,7 @@ namespace FLentProject.Api.Controlllers
         }
 
 
+        [Filters.Authorize]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -37,6 +38,7 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
@@ -50,6 +52,7 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
         [HttpPost]
         public IActionResult Create([FromBody] FriendCreateViewModel friendCreateViewModel)
         {
@@ -74,6 +77,7 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
         [HttpPut("{id}")]
         public IActionResult Edit(string id, [FromBody] FriendEditViewModel friendEditViewModel)
         {
@@ -83,7 +87,8 @@ namespace FLentProject.Api.Controlllers
                 var phone = new Phone(friendEditViewModel.Phone);
 
                 var friend = _friendService.GetById(id);
-                friend.Edit(friendEditViewModel.NickName,
+                friend.Edit(friendEditViewModel.Name,
+                            friendEditViewModel.NickName,
                             email, 
                             phone);
 
@@ -97,6 +102,7 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {

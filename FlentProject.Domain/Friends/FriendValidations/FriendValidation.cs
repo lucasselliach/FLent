@@ -13,7 +13,7 @@ namespace FLentProject.Domain.Friends.FriendValidations
         {
             AddNotifications(new Contract()
                 .IsNotNull(value, "FriendNickName", "Apelido da pessoa não pode ser nulo.")
-                .HasMaxLen(value, Friend.MaxNickNameLength, "FriendNickName", "Apelido da pessoa não pode ter tamanho maior que " + Friend.MaxNickNameLength + ".")
+                .HasMaxLengthIfNotNullOrEmpty(value, Friend.MaxNickNameLength, "FriendNickName", "Apelido da pessoa não pode ter tamanho maior que " + Friend.MaxNickNameLength + ".")
             );
         }
 
