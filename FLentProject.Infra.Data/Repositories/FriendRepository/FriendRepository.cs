@@ -15,16 +15,16 @@ namespace FLentProject.Infra.Data.Repositories.FriendRepository
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Friend> GetAll()
+        public IEnumerable<Friend> GetAll(string userId)
         {
             var session = _unitOfWork.OpenSession();
-            return session.Query<Friend>().ToHashSet();
+            return session.Query<Friend>().Where(x => x.UserId == userId).ToHashSet();
         }
 
-        public Friend GetById(string id)
+        public Friend GetById(string id, string userId)
         {
             var session = _unitOfWork.OpenSession();
-            return session.Load<Friend>(id);
+            return session.Query<Friend>().FirstOrDefault(x => x.UserId == userId);
         }
 
         public bool Create(Friend entity)

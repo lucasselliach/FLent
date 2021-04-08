@@ -16,13 +16,13 @@ namespace FLentProject.Infra.Data.Repositories.UserRepository
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<User> GetAll(string userId)
         {
             var session = _unitOfWork.OpenSession();
             return session.Query<User>().ToHashSet();
         }
 
-        public User GetById(string id)
+        public User GetById(string id, string userId)
         {
             var session = _unitOfWork.OpenSession();
             return session.Load<User>(id);

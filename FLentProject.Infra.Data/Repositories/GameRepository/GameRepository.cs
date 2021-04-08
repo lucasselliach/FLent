@@ -15,16 +15,16 @@ namespace FLentProject.Infra.Data.Repositories.GameRepository
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Game> GetAll()
+        public IEnumerable<Game> GetAll(string userId)
         {
             var session = _unitOfWork.OpenSession();
-            return session.Query<Game>().ToHashSet();
+            return session.Query<Game>().Where(x => x.UserId == userId).ToHashSet();
         }
 
-        public Game GetById(string id)
+        public Game GetById(string id, string userId)
         {
             var session = _unitOfWork.OpenSession();
-            return session.Load<Game>(id);
+            return session.Query<Game>().FirstOrDefault(x => x.UserId == userId);
         }
 
         public bool Create(Game entity)

@@ -15,16 +15,16 @@ namespace FLentProject.Infra.Data.Repositories.LendRepository
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Lend> GetAll()
+        public IEnumerable<Lend> GetAll(string userId)
         {
-            var session = _unitOfWork.OpenSession();
-            return session.Query<Lend>().ToHashSet();
+            var session = _unitOfWork.OpenSession();            
+            return session.Query<Lend>().Where(x=>x.UserId == userId).ToHashSet();
         }
 
-        public Lend GetById(string id)
+        public Lend GetById(string id, string userId)
         {
             var session = _unitOfWork.OpenSession();
-            return session.Load<Lend>(id);
+            return session.Query<Lend>().FirstOrDefault(x => x.UserId == userId);
         }
 
         public bool Create(Lend entity)

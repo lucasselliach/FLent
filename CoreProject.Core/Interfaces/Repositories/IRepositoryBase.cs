@@ -5,8 +5,8 @@ namespace CoreProject.Core.Interfaces.Repositories
 {
     public interface IRepositoryBase<TEntity> where TEntity : Entity
     {
-        IEnumerable<TEntity> GetAll();
-        TEntity GetById(string id);
+        IEnumerable<TEntity> GetAll(string userId);
+        TEntity GetById(string id, string userId);
 
         bool Create(TEntity entity);
         bool Edit(TEntity entity);
