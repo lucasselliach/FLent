@@ -23,14 +23,14 @@ namespace FLentProject.Application.UserService
         }
 
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<User> GetAll(string userId)
         {
-            return _userRepository.GetAll();
+            return _userRepository.GetAll(userId);
         }
 
-        public User GetById(string id)
+        public User GetById(string id, string userId)
         {
-            return _userRepository.GetById(id);
+            return _userRepository.GetById(id, userId);
         }
 
         public void Create(User entity)

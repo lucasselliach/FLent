@@ -5,8 +5,8 @@ namespace CoreProject.Core.Interfaces.Services
 {
     public interface IServiceBase<TEntity> where TEntity : Entity
     {
-        IEnumerable<TEntity> GetAll();
-        TEntity GetById(string id);
+        IEnumerable<TEntity> GetAll(string userId);
+        TEntity GetById(string id, string userId);
 
         void Create(TEntity entity);
         void Edit(TEntity entity);

@@ -30,7 +30,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                return CreateResponse(HttpStatusCode.OK, _friendService.GetAll());
+                return CreateResponse(HttpStatusCode.OK, _friendService.GetAll(_userIdentity.GetUserId()));
             }
             catch (Exception err)
             {
@@ -44,7 +44,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                return CreateResponse(HttpStatusCode.OK, _friendService.GetById(id));
+                return CreateResponse(HttpStatusCode.OK, _friendService.GetById(id, _userIdentity.GetUserId()));
             }
             catch (Exception err)
             {
@@ -86,7 +86,7 @@ namespace FLentProject.Api.Controlllers
                 var email = new Email(friendEditViewModel.Email);
                 var phone = new Phone(friendEditViewModel.Phone);
 
-                var friend = _friendService.GetById(id);
+                var friend = _friendService.GetById(id, _userIdentity.GetUserId());
                 friend.Edit(friendEditViewModel.Name,
                             friendEditViewModel.NickName,
                             email, 
@@ -108,7 +108,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                var friend = _friendService.GetById(id);
+                var friend = _friendService.GetById(id, _userIdentity.GetUserId());
                 _friendService.Delete(friend);
 
                 return CreateResponse(HttpStatusCode.OK, "Object deleted");

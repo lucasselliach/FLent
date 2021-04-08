@@ -21,14 +21,14 @@ namespace FLentProject.Application.FriendService
         }
 
 
-        public IEnumerable<Friend> GetAll()
+        public IEnumerable<Friend> GetAll(string userId)
         {
-            return _friendRepository.GetAll();
+            return _friendRepository.GetAll(userId);
         }
 
-        public Friend GetById(string id)
+        public Friend GetById(string id, string userId)
         {
-            return _friendRepository.GetById(id);
+            return _friendRepository.GetById(id, userId);
         }
 
         public void Create(Friend entity)

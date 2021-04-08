@@ -28,7 +28,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                return CreateResponse(HttpStatusCode.OK, _gameService.GetAll());
+                return CreateResponse(HttpStatusCode.OK, _gameService.GetAll(_userIdentity.GetUserId()));
             }
             catch (Exception err)
             {
@@ -42,7 +42,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                return CreateResponse(HttpStatusCode.OK, _gameService.GetById(id));
+                return CreateResponse(HttpStatusCode.OK, _gameService.GetById(id, _userIdentity.GetUserId()));
             }
             catch (Exception err)
             {
@@ -74,7 +74,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                var game = _gameService.GetById(id);
+                var game = _gameService.GetById(id, _userIdentity.GetUserId());
                 game.Edit(gameEditViewModel.Name);
 
                 _gameService.Edit(game);
@@ -93,7 +93,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                var game = _gameService.GetById(id);
+                var game = _gameService.GetById(id, _userIdentity.GetUserId());
                 _gameService.Delete(game);
 
                 return CreateResponse(HttpStatusCode.OK, "Object deleted");

@@ -35,7 +35,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                return CreateResponse(HttpStatusCode.OK, _lendService.GetAll());
+                return CreateResponse(HttpStatusCode.OK, _lendService.GetAll(_userIdentity.GetUserId()));
             }
             catch (Exception err)
             {
@@ -49,7 +49,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                return CreateResponse(HttpStatusCode.OK, _lendService.GetById(id));
+                return CreateResponse(HttpStatusCode.OK, _lendService.GetById(id, _userIdentity.GetUserId()));
             }
             catch (Exception err)
             {
@@ -63,8 +63,8 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                var game = _gameService.GetById(lendCreateViewModel.GamerId);
-                var friend = _friendService.GetById(lendCreateViewModel.FriendId);
+                var game = _gameService.GetById(lendCreateViewModel.GamerId, _userIdentity.GetUserId());
+                var friend = _friendService.GetById(lendCreateViewModel.FriendId, _userIdentity.GetUserId());
 
                 var lend = new Lend(friend,
                                     game,

@@ -21,14 +21,14 @@ namespace FLentProject.Application.GameService
         }
 
 
-        public IEnumerable<Game> GetAll()
+        public IEnumerable<Game> GetAll(string userId)
         {
-            return _gameRepository.GetAll();
+            return _gameRepository.GetAll(userId);
         }
 
-        public Game GetById(string id)
+        public Game GetById(string id, string userId)
         {
-            return _gameRepository.GetById(id);
+            return _gameRepository.GetById(id, userId);
         }
 
         public void Create(Game entity)

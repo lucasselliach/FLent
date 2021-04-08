@@ -20,14 +20,14 @@ namespace FLentProject.Application.LendService
             _validationNotification = validationNotification;
         }
 
-        public IEnumerable<Lend> GetAll()
+        public IEnumerable<Lend> GetAll(string userId)
         {
-            return _lendRepository.GetAll();
+            return _lendRepository.GetAll(userId);
         }
 
-        public Lend GetById(string id)
+        public Lend GetById(string id, string userId)
         {
-            return _lendRepository.GetById(id);
+            return _lendRepository.GetById(id, userId);
         }
 
         public void Create(Lend entity)

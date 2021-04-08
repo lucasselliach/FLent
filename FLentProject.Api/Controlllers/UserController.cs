@@ -5,6 +5,7 @@ using CoreProject.Core.ValueObjects;
 using FLentProject.Api.Controlllers.ViewModels.UserViewModels;
 using FLentProject.Domain.Users;
 using FLentProject.Domain.Users.UserInterfaces.Services;
+using FLentProject.Infra.CrossCutting.Auth.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +16,12 @@ namespace FLentProject.Api.Controlllers
     public class UserController : ApiController
     {
         private readonly IUserService _userService;
-        public UserController(IValidationNotification validationNotification, IUserService userService) : base(validationNotification)
+        private readonly IUserIdentity _userIdentity;
+
+        public UserController(IValidationNotification validationNotification, IUserService userService, IUserIdentity userIdentity) : base(validationNotification)
         {
             _userService = userService;
+            _userIdentity = userIdentity;
         }
 
 
@@ -27,7 +31,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                return CreateResponse(HttpStatusCode.OK, _userService.GetAll());
+                return CreateResponse(HttpStatusCode.OK, _userService.GetAll(_userIdentity.GetUserId()));
             }
             catch (Exception err)
             {
@@ -41,7 +45,7 @@ namespace FLentProject.Api.Controlllers
         {
             try
             {
-                return CreateResponse(HttpStatusCode.OK, _userService.GetById(id));
+                return CreateResponse(HttpStatusCode.OK, _userService.GetById(id, _userIdentity.GetUserId()));
             }
             catch (Exception err)
             {

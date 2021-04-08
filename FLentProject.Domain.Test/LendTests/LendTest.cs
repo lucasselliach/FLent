@@ -3,7 +3,6 @@ using CoreProject.Core.ValueObjects;
 using FLentProject.Domain.Friends;
 using FLentProject.Domain.Games;
 using FLentProject.Domain.Lends;
-using FLentProject.Domain.Users;
 using Xunit;
 
 namespace FLentProject.Domain.Test.LendTests
@@ -15,12 +14,6 @@ namespace FLentProject.Domain.Test.LendTests
         {
             var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
 
-            var userEmail = new Email("zezinho@gmail.com");
-
-            var user = new User("Zezinho",
-                                userEmail,
-                                "123456");
-
             var friendEmail = new Email("duduzinho@gmail.com");
             var friendPhone = new Phone("9999999999");
 
@@ -32,7 +25,7 @@ namespace FLentProject.Domain.Test.LendTests
 
             var game = new Game("Call of Duty: MW", userId);
 
-            var lend = new Lend(user, friend, game, userId);
+            var lend = new Lend(friend, game, userId);
 
             Assert.True(Guid.TryParse(lend.Id, out _), "Lend id is not valid!");
         }
@@ -42,12 +35,6 @@ namespace FLentProject.Domain.Test.LendTests
         {
             var userId = "9630b29b-c133-4d80-b4d6-e86291bb1886";
 
-            var userEmail = new Email("zezinho@gmail.com");
-
-            var user = new User("Zezinho",
-                                userEmail,
-                                "123456");
-
             var friendEmail = new Email("duduzinho@gmail.com");
             var friendPhone = new Phone("9999999999");
 
@@ -59,7 +46,7 @@ namespace FLentProject.Domain.Test.LendTests
 
             var game = new Game("Call of Duty: MW", userId);
 
-            var lend = new Lend(user, friend, game, userId);
+            var lend = new Lend(friend, game, userId);
 
             Assert.False(string.IsNullOrEmpty(lend.Title), "Lend title is empty!");
         }
