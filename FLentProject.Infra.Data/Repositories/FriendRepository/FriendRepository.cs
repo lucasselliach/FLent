@@ -24,7 +24,13 @@ namespace FLentProject.Infra.Data.Repositories.FriendRepository
         public Friend GetById(string id, string userId)
         {
             var session = _unitOfWork.OpenSession();
-            return session.Query<Friend>().FirstOrDefault(x => x.UserId == userId);
+            return session.Query<Friend>().FirstOrDefault(x => x.UserId == userId && x.Id == id);
+        }
+
+        public int GetCount(string userId)
+        {
+            var session = _unitOfWork.OpenSession();
+            return session.Query<Friend>().Count(x => x.UserId == userId);
         }
 
         public bool Create(Friend entity)

@@ -28,6 +28,12 @@ namespace FLentProject.Infra.Data.Repositories.UserRepository
             return session.Load<User>(id);
         }
 
+        public int GetCount(string userId)
+        {
+            var session = _unitOfWork.OpenSession();
+            return session.Query<User>().Count(x => x.Id == userId);
+        }
+
         public bool Create(User entity)
         {
             var session = _unitOfWork.OpenSession();

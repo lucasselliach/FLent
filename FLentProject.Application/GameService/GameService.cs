@@ -31,6 +31,11 @@ namespace FLentProject.Application.GameService
             return _gameRepository.GetById(id, userId);
         }
 
+        public int GetCount(string userId)
+        {
+            return _gameRepository.GetCount(userId);
+        }
+
         public void Create(Game entity)
         {
             if (_gameValidation.Check(entity))
@@ -71,6 +76,11 @@ namespace FLentProject.Application.GameService
             {
                 _validationNotification.Notifications = _gameValidation.CheckedNotifications();
             }
+        }
+
+        public IEnumerable<Game> GetAllAvailable(string userId)
+        {
+            return _gameRepository.GetAllAvailable(userId);
         }
     }
 }

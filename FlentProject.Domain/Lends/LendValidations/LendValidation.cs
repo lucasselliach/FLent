@@ -76,17 +76,11 @@ namespace FLentProject.Domain.Lends.LendValidations
             IdContract(lend.Id);
             FriendContract(lend.Friend);
             GameContract(lend.Game);
-
-            return Valid;
-        }
-
-        public bool CheckLending(Lend lend)
-        {
             LendingDateContract(lend.LendingDate);
             DeadlineDateContract(lend.DeadlineDate);
 
             return Valid;
-        }
+        } 
 
         public IReadOnlyCollection<Notification> CheckedNotifications()
         {

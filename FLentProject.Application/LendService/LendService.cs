@@ -30,6 +30,11 @@ namespace FLentProject.Application.LendService
             return _lendRepository.GetById(id, userId);
         }
 
+        public int GetCount(string userId)
+        {
+            return _lendRepository.GetCount(userId);
+        }
+
         public void Create(Lend entity)
         {
             if (_lendValidation.Check(entity))

@@ -7,6 +7,7 @@ namespace CoreProject.Core.Interfaces.Repositories
     {
         IEnumerable<TEntity> GetAll(string userId);
         TEntity GetById(string id, string userId);
+        int GetCount(string userId);
 
         bool Create(TEntity entity);
         bool Edit(TEntity entity);

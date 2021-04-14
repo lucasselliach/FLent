@@ -53,6 +53,21 @@ namespace FLentProject.Api.Controlllers
         }
 
         [Filters.Authorize]
+        [HttpGet]
+        [Route("getCount")]
+        public IActionResult GetCount()
+        {
+            try
+            {
+                return CreateResponse(HttpStatusCode.OK, _friendService.GetCount(_userIdentity.GetUserId()));
+            }
+            catch (Exception err)
+            {
+                return CreateResponse(HttpStatusCode.BadRequest, err.Message);
+            }
+        }
+        
+        [Filters.Authorize]
         [HttpPost]
         public IActionResult Create([FromBody] FriendCreateViewModel friendCreateViewModel)
         {

@@ -24,7 +24,13 @@ namespace FLentProject.Infra.Data.Repositories.LendRepository
         public Lend GetById(string id, string userId)
         {
             var session = _unitOfWork.OpenSession();
-            return session.Query<Lend>().FirstOrDefault(x => x.UserId == userId);
+            return session.Query<Lend>().FirstOrDefault(x => x.UserId == userId && x.Id == id);
+        }
+
+        public int GetCount(string userId)
+        {
+            var session = _unitOfWork.OpenSession();
+            return session.Query<Lend>().Count(x => x.UserId == userId);
         }
 
         public bool Create(Lend entity)

@@ -7,6 +7,7 @@ namespace CoreProject.Core.Interfaces.Services
     {
         IEnumerable<TEntity> GetAll(string userId);
         TEntity GetById(string id, string userId);
+        int GetCount(string userId);
 
         void Create(TEntity entity);
         void Edit(TEntity entity);

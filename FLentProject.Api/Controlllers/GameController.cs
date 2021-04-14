@@ -37,12 +37,42 @@ namespace FLentProject.Api.Controlllers
         }
 
         [Filters.Authorize]
+        [HttpGet]
+        [Route("getAllAvailable")]
+        public IActionResult GetAllAvailable()
+        {
+            try
+            {
+                return CreateResponse(HttpStatusCode.OK, _gameService.GetAllAvailable(_userIdentity.GetUserId()));
+            }
+            catch (Exception err)
+            {
+                return CreateResponse(HttpStatusCode.BadRequest, err.Message);
+            }
+        }
+
+        [Filters.Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
             try
             {
                 return CreateResponse(HttpStatusCode.OK, _gameService.GetById(id, _userIdentity.GetUserId()));
+            }
+            catch (Exception err)
+            {
+                return CreateResponse(HttpStatusCode.BadRequest, err.Message);
+            }
+        }
+
+        [Filters.Authorize]
+        [HttpGet]
+        [Route("getCount")]
+        public IActionResult GetCount()
+        {
+            try
+            {
+                return CreateResponse(HttpStatusCode.OK, _gameService.GetCount(_userIdentity.GetUserId()));
             }
             catch (Exception err)
             {

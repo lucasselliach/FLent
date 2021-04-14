@@ -31,6 +31,11 @@ namespace FLentProject.Application.FriendService
             return _friendRepository.GetById(id, userId);
         }
 
+        public int GetCount(string userId)
+        {
+            return _friendRepository.GetCount(userId);
+        }
+
         public void Create(Friend entity)
         {
             if (_friendValidation.Check(entity))

@@ -24,7 +24,13 @@ namespace FLentProject.Infra.Data.Repositories.GameRepository
         public Game GetById(string id, string userId)
         {
             var session = _unitOfWork.OpenSession();
-            return session.Query<Game>().FirstOrDefault(x => x.UserId == userId);
+            return session.Query<Game>().FirstOrDefault(x => x.UserId == userId && x.Id == id);
+        }
+
+        public int GetCount(string userId)
+        {
+            var session = _unitOfWork.OpenSession();
+            return session.Query<Game>().Count(x => x.UserId == userId);
         }
 
         public bool Create(Game entity)
@@ -53,6 +59,12 @@ namespace FLentProject.Infra.Data.Repositories.GameRepository
             session.SaveChanges();
 
             return session.Advanced.Exists(entity.Id) == false;
+        }
+
+        public IEnumerable<Game> GetAllAvailable(string userId)
+        {
+            var session = _unitOfWork.OpenSession();
+            return session.Query<Game>().Where(x => x.UserId == userId && x.Lent == false).ToHashSet();
         }
     }
 }

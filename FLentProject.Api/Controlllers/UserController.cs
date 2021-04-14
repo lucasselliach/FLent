@@ -89,41 +89,5 @@ namespace FLentProject.Api.Controlllers
                 return CreateResponse(HttpStatusCode.BadRequest, err.Message);
             }
         }
-        
-
-        //[HttpPut("{id}")]
-        //public IActionResult Edit(string id, [FromBody] UserEditViewModel userEditViewModel)
-        //{
-        //    try
-        //    {
-        //        var user = _userService.GetById(id);
-        //        user.Edit(userEditViewModel.Name);
-
-        //        _userService.Edit(user);
-
-        //        return CreateResponse(HttpStatusCode.OK, "Object edited");
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        return CreateResponse(HttpStatusCode.BadRequest, err.Message);
-        //    }
-        //}
-        
-        //[Filters.Authorize]
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(string id)
-        //{
-        //    try
-        //    {
-        //        var user = _userService.GetById(id);
-        //        _userService.Delete(user);
-
-        //        return CreateResponse(HttpStatusCode.OK, "Object deleted");
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        return CreateResponse(HttpStatusCode.BadRequest, err.Message);
-        //    }
-        //}
     }
 }

@@ -33,6 +33,11 @@ namespace FLentProject.Application.UserService
             return _userRepository.GetById(id, userId);
         }
 
+        public int GetCount(string userId)
+        {
+            return _userRepository.GetCount(userId);
+        }
+
         public void Create(User entity)
         {
             if (_userValidation.Check(entity))

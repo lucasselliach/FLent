@@ -28,19 +28,19 @@ namespace FLentProject.Domain.Lends
 
         public void Lending(DateTime deadlineDate)
         {
+            Game.Lending();
+
             LendingDate = DateTime.Today;
             DeadlineDate = deadlineDate;
             Active = true;
-            
-            Game.Lending();
         }
 
         public void Returning()
         {
+            Game.Returning();
+
             ReturnDate = DateTime.Today;
             Active = false;
-
-            Game.Returning();
         }
     }
 }

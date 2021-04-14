@@ -58,6 +58,21 @@ namespace FLentProject.Api.Controlllers
         }
 
         [Filters.Authorize]
+        [HttpGet]
+        [Route("getCount")]
+        public IActionResult GetCount()
+        {
+            try
+            {
+                return CreateResponse(HttpStatusCode.OK, _lendService.GetCount(_userIdentity.GetUserId()));
+            }
+            catch (Exception err)
+            {
+                return CreateResponse(HttpStatusCode.BadRequest, err.Message);
+            }
+        }
+
+        [Filters.Authorize]
         [HttpPost]
         public IActionResult Create([FromBody] LendCreateViewModel lendCreateViewModel)
         {
@@ -70,6 +85,7 @@ namespace FLentProject.Api.Controlllers
                                     game,
                                     _userIdentity.GetUserId());
 
+                lend.Lending(lendCreateViewModel.DeadlineDate);
                 _lendService.Create(lend);
 
                 return CreateResponse(HttpStatusCode.OK, "Object created");
@@ -80,8 +96,26 @@ namespace FLentProject.Api.Controlllers
             }
         }
 
+        [Filters.Authorize]
+        [HttpPut("{id}")]
+        public IActionResult Edit(string id)
+        {
+            try
+            {
+                var lend = _lendService.GetById(id, _userIdentity.GetUserId());
+                lend.Returning();
+                _lendService.Edit(lend);
 
+                var game = _gameService.GetById(lend.Game.Id, _userIdentity.GetUserId());
+                game.Returning();
+                _gameService.Edit(game);
 
-
+                return CreateResponse(HttpStatusCode.OK, "Object edited");
+            }
+            catch (Exception err)
+            {
+                return CreateResponse(HttpStatusCode.BadRequest, err.Message);
+            }
+        }
     }
 }
