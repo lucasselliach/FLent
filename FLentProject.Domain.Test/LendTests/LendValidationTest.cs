@@ -1,4 +1,6 @@
-﻿using CoreProject.Core.ValueObjects;
+﻿using System;
+using System.Linq;
+using CoreProject.Core.ValueObjects;
 using FLentProject.Domain.Friends;
 using FLentProject.Domain.Friends.FriendValidations;
 using FLentProject.Domain.Games;
@@ -30,6 +32,7 @@ namespace FLentProject.Domain.Test.LendTests
                 userId);
 
             var lend = new Lend(friend, null, userId);
+            lend.Lending(DateTime.Now.AddDays(2));
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }
@@ -54,8 +57,9 @@ namespace FLentProject.Domain.Test.LendTests
             var game = new Game("Call of Duty: MW", userId);
 
             var lend = new Lend(friend, game, userId);
+            lend.Lending(DateTime.Now.AddDays(2));
 
-            Assert.True(lendValidation.Check(lend), "Lend is not valid! R:" + lendValidation.Notifications);
+            Assert.True(lendValidation.Check(lend), "Lend is not valid! R:" + lendValidation.Notifications.FirstOrDefault()?.Message);
         }
 
         [Fact]
@@ -79,6 +83,7 @@ namespace FLentProject.Domain.Test.LendTests
             var game = new Game("Call of Duty: MW", userId);
 
             var lend = new Lend(friend, game, userId);
+            lend.Lending(DateTime.Now.AddDays(2));
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }
@@ -104,6 +109,7 @@ namespace FLentProject.Domain.Test.LendTests
             var game = new Game("C", userId);
 
             var lend = new Lend(friend, game, userId);
+            lend.Lending(DateTime.Now.AddDays(2));
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }
@@ -120,6 +126,7 @@ namespace FLentProject.Domain.Test.LendTests
             var game = new Game("Call of Duty: MW", userId);
 
             var lend = new Lend(null, game, userId);
+            lend.Lending(DateTime.Now.AddDays(2));
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }
@@ -142,6 +149,7 @@ namespace FLentProject.Domain.Test.LendTests
                 friendPhone, userId);
 
             var lend = new Lend(friend, null, userId);
+            lend.Lending(DateTime.Now.AddDays(2));
 
             Assert.False(lendValidation.Check(lend), "Lend is not invalid!");
         }

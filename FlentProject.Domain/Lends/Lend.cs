@@ -28,7 +28,7 @@ namespace FLentProject.Domain.Lends
 
         public void Lending(DateTime deadlineDate)
         {
-            Game.Lending();
+            Game?.Lending();
 
             LendingDate = DateTime.Today;
             DeadlineDate = deadlineDate;
@@ -37,7 +37,7 @@ namespace FLentProject.Domain.Lends
 
         public void Returning()
         {
-            Game.Returning();
+            Game?.Returning();
 
             ReturnDate = DateTime.Today;
             Active = false;
